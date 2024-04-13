@@ -5,27 +5,24 @@ import {TasksUseContext , DipatchReducerContext} from './TasksProvider'
 function AddTask() {
     const [taskTitle , setTaskTitle] = useState('')
     const [taskInfo , setTaskInfo] = useState('')
-    // const [nextId , setNextId] = useState(1)
     const dispatch = DipatchReducerContext()
     const tasks = TasksUseContext()
     return (
     <>
         <InputGroup className="mb-3">
-        
         <Form.Control placeholder="Enter task title" value={taskTitle}
         onChange={(e)=>{setTaskTitle(e.target.value)}}
         />
         <Form.Control placeholder="Enter task description" value={taskInfo}
         onChange={(e)=>{setTaskInfo(e.target.value)}}
         />
-        <Button variant="outline-secondary"
+        <Button className='add-button'
         onClick={()=>{
             dispatch({
                 type : 'add' , 
                 task : 
                 {
                     ...tasks , 
-                    // id  : nextId , 
                     id  : Date.now() , 
                     title : taskTitle , 
                     info : taskInfo
@@ -39,5 +36,4 @@ function AddTask() {
     </>
 )
 }
-// let nextId = 0
 export default AddTask

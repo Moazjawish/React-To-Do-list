@@ -95,3 +95,27 @@
   {
     margin: 30px auto !important;
   }
+.filter-button
+{
+  background-color: #0d52b6 !important;
+}
+.add-button
+{
+  background-color: #1150ac !important;
+  color: white;
+  border: 1px solid #1150ac;
+  transition: 0.3s;
+}
+.edit-button ,
+.delete-button
+{
+  color: white !important;
+  font-size: 17px !important;
+} 
+.edit-button:hover ,
+.delete-button:hover
+{
+  transform: translateY(-5px);
+  transition: 0.3s;
+
+}

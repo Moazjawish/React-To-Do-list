@@ -73,7 +73,6 @@ function useReducerDispatch(tasks , action)
         {
             return action.tasks
         }
-
         default : 
         {
             throw Error("Unknown action: " + action.type);
@@ -81,10 +80,6 @@ function useReducerDispatch(tasks , action)
     }
 
 }
-
-
-
-
 
 
 let initialtasks = []
