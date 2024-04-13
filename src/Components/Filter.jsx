@@ -5,42 +5,41 @@ import { Dropdown } from "react-bootstrap"
 import {TasksUseContext , DipatchReducerContext} from './TasksProvider'
 function Filter({tasks}) {
     const dispatch = DipatchReducerContext();
-    const [filteredTasks , setFilteredTasks] = useState(null)
-    function handleFilter(tasksTitle)
+    const [filtered , setFiltered] = useState(tasks)
+    console.log(filtered)
+    function handleFiltered(e)
     {
-        tasksTitle !== 'All' ? setFilteredTasks(filterTask(tasksTitle)) : setFilteredTasks(tasks)
+        let word = e.target.title
+        if(word === 'All')
+        {
+            setFiltered(tasks)
+        }
+        else if(word === 'Home')
+        {
+            const filteredList = tasks.filter(item=>item.title === "Home");
+            setFiltered(filteredList) 
+            console.log(filtered)
+        }
+        else if(word === 'Company')
+        {
+            const filteredList = tasks.filter(item=>item.title === "Company");
+            setFiltered(filteredList) 
+        }
+        dispatch({
+            type : 'filtered' ,
+            tasks : filtered
+        })
     }
-    function filterTask(taskTitle)
-    {
-        let filterTasks = tasks.filter((task)=>(task.title) === taskTitle)
-        return filterTasks
-    }
-    console.log(filteredTasks)
+
     return (
     <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">All</Dropdown.Toggle>
         <Dropdown.Menu>
-        <Dropdown.Item href="#/action-3" title='All' onClick={(e)=>  {
-            dispatch({
-                type : 'filtered',
-                title : e.target.title,
-            })
-        }}>All</Dropdown.Item>
-        <Dropdown.Item href="#/action-2" title='Home' onClick={(e)=> {
-            dispatch({
-                type : 'filtered',
-                title : e.target.title,
-            })
-        }}>Home</Dropdown.Item>
-        <Dropdown.Item href="#/action-3" title='Company' onClick={(e)=>{
-            dispatch({
-                type : 'filtered' , 
-                title : e.target.title
-            })
-        }}>Company</Dropdown.Item>
+        <Dropdown.Item href="#/action-3" title='All'     onClick={handleFiltered}>All</Dropdown.Item>
+        <Dropdown.Item href="#/action-2" title='Home'    onClick={handleFiltered}>Home</Dropdown.Item>
+        <Dropdown.Item href="#/action-3" title='Company' onClick={handleFiltered}>Company</Dropdown.Item>
         </Dropdown.Menu>
     </Dropdown>
     );
 }
-
 export default Filter

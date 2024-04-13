@@ -11,7 +11,7 @@ function TasksList() {
     const tasks = TasksUseContext()
     return (
         <>
-        <Filter tasks = {tasks}/>
+        {/* <Filter tasks = {tasks}/> */}
         <ul className='tasks'>
         {tasks.map((task) =>(
             <li className='taskList' key={task.id}>

@@ -10,12 +10,17 @@ const dispatchContext = React.createContext(null)
 
 function TasksProvider({children}) {
     const [tasks , dispatch] = useReducer(useReducerDispatch , initialtasks)
-    SetLocalStorage(tasks)
-    console.log(tasks)
     useEffect(()=>{
-        const getTasks = JSON.parse(localStorage.getItem('tasks'))
+        const data = JSON.parse(localStorage.getItem('tasks'))
+        if(data)
+        {
+            dispatch({type : 'refreshed',tasks : data}) 
+        }
+    },[])
+    useEffect(()=>{
+        localStorage.setItem('tasks' , JSON.stringify(tasks))
     },[tasks])
-    
+
     return (
     <>
     <tasksContext.Provider value={tasks}>
@@ -62,8 +67,13 @@ function useReducerDispatch(tasks , action)
         }
         case 'filtered' : 
         {
-            return tasks.filter((t)=> t.title === action.title)
+            return action.tasks
         }
+        case 'refreshed' : 
+        {
+            return action.tasks
+        }
+
         default : 
         {
             throw Error("Unknown action: " + action.type);
@@ -72,26 +82,11 @@ function useReducerDispatch(tasks , action)
 
 }
 
-function SetLocalStorage(tasks)
-{
-    useEffect(()=>{
-        localStorage.setItem('tasks' , JSON.stringify(tasks))
-    },[tasks])
-}
-// function GetLocalStorage(tasks)
-// {
-//     useEffect(()=>{
-//         const tasks = JSON.parse(localStorage.getItem('tasks'))
-//     },[tasks])
-// }
 
 
 
 
-let initialtasks = [
-// {id : 0 , title : 'Home' , info : "bedroom cleanning"},
-// {id : 1 , title : 'Company' , info : "DeadLine"},
-// {id : 2 , title : 'Home' , info : "tide"},
-]
+
+let initialtasks = []
 
 export default TasksProvider
