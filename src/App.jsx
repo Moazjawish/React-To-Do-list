@@ -6,6 +6,7 @@ import TasksProvider from './Components/TasksProvider'
 function App() {
   return (
     <>
+    <h1 className='title'>To Do list</h1>
   <TasksProvider>
     <AddTask/>
     <TasksList/>

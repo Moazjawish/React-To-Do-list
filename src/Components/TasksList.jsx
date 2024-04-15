@@ -9,7 +9,7 @@ import Filter from './Filter';
 
 function TasksList() {
     const tasks = TasksUseContext()
-    const [filteredTextValue , setFilteredValue] = useState('')
+    const [filteredTextValue , setFilteredValue] = useState('All')
     let filteredList = tasks.filter((task)=>{
         if(filteredTextValue === 'Home')
         {
@@ -28,9 +28,11 @@ function TasksList() {
     {
         setFilteredValue(e.target.title)
     }
+    console.log(filteredList)
     return (
         <>
-        <Filter onFilteredValue={onFilteredValue}/>
+        <Filter onFilteredValue={onFilteredValue} filteredValue = {filteredTextValue}/>
+        {filteredList != ""?
         <ul className='tasks'>
         {filteredList.map((task) =>(
             <li className='taskList' key={task.id}>
@@ -40,6 +42,9 @@ function TasksList() {
         </li>
         ))}
         </ul>
+        :
+    <h1 className='message'>No tasks Yet</h1>
+    }
     </>
 )
 }

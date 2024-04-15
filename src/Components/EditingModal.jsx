@@ -57,13 +57,13 @@ function EditingModal({task , edited , setEdited }) {
             <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Title</Form.Label>
-                <Form.Control type="text" placeholder="Edit task title" autoFocus  defaultValue = {task.title}
+                <Form.Control type="text" placeholder="Edit task title" autoFocus  defaultValue = {task.title} className='shadow-none'
                 onChange={handleTitleTitle}
                 />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Description</Form.Label>
-                <Form.Control as='textarea' rows={3}  placeholder='Edit task description'  autoFocus defaultValue={task.info}
+                <Form.Control as='textarea' rows={3}  placeholder='Edit task description'  autoFocus defaultValue={task.info} className='shadow-none'
                 onChange={handleTaskInfo}
                 />
             </Form.Group>             
@@ -71,7 +71,7 @@ function EditingModal({task , edited , setEdited }) {
         </Modal.Body>
         <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>Close</Button>
-            <Button variant="primary" onClick={saveChange}>Save Changes</Button>
+            <Button variant="primary" onClick={saveChange} className='save-button'>Save Changes</Button>
         </Modal.Footer>
         </Modal>
     </>

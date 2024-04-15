@@ -47,7 +47,6 @@
     background-color: #91b2e1;
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    /* animation: animate-in 1s ease-out forwards; */
     animation: animate-in 1s ease-out forwards;
   }
 
@@ -62,7 +61,6 @@
   grid-template-columns: repeat(3, 50%);
   justify-content: center;}
 
-
   @keyframes animate-in {
     from {
       opacity: 0;
@@ -73,10 +71,7 @@
       transform: translateY(0);
     }
   }
-
-
   .task_title {
-    /* font-size: 0.8rem; */
     font-size: 16px;
     font-weight: bold;
     color: #013d8a;
@@ -103,8 +98,8 @@
 {
   background-color: #1150ac !important;
   color: white;
-  border: 1px solid #1150ac;
-  transition: 0.3s;
+  border: none !important;
+  transition: 0.3s; 
 }
 .edit-button ,
 .delete-button
@@ -118,4 +113,31 @@
   transform: translateY(-5px);
   transition: 0.3s;
 
+}
+.title
+{
+    font-size: 75px;
+    font-family: ui-monospace;
+    margin: 40px auto;
+    color: #043574;
+}
+.message
+{
+  font-size: 45px;
+    font-family: none;
+    margin: 30px;
+    color: #043574;
+}
+.modal-content
+{
+  background-color: #91b2e1 !important;
+  color: #043574 !important;
+  font-family: ui-monospace;
+  font-weight: bold;
+  font-size: 20px;
+}
+.save-button
+{
+  background-color: #043574 !important;
+  border: none !important;
 }

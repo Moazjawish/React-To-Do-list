@@ -9,11 +9,11 @@ function AddTask() {
     const tasks = TasksUseContext()
     return (
     <>
-        <InputGroup className="mb-3">
-        <Form.Control placeholder="Enter task title" value={taskTitle}
+        <InputGroup className="mb-3 ">
+        <Form.Control placeholder="Enter task title" className=' shadow-none' value={taskTitle}
         onChange={(e)=>{setTaskTitle(e.target.value)}}
         />
-        <Form.Control placeholder="Enter task description" value={taskInfo}
+        <Form.Control placeholder="Enter task description" className='shadow-none' value={taskInfo}
         onChange={(e)=>{setTaskInfo(e.target.value)}}
         />
         <Button className='add-button'
